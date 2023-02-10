@@ -14,9 +14,9 @@ const Overview = () => {
       <p className="text-center">
         범지구적인 사회문제가 되어버린
         <br className="sm:hidden block" />
-        <span className="inline-block text-red-500 font-semibold sm:text-xl text-lg mb-4 sm:ml-1 ml-0">
-          유행성 반려견 결핍.
-        </span>
+        <strong className="inline-block text-red-500 sm:text-xl text-lg mb-4 sm:ml-1 ml-0">
+          유행성 반려견 결핍
+        </strong>
         <span className="block text-xl">살바도르 퍼피가 해결합니다.</span>
       </p>
     </section>

@@ -1,4 +1,4 @@
-import { Overview, Samples } from "../component";
+import { Description, Overview, Samples } from "../component";
 import styles from "../style";
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
     >
       <Overview />
       <Samples />
+      <Description />
     </div>
   );
 };
