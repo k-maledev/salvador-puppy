@@ -4,7 +4,7 @@ const Overview = () => {
   return (
     <section className={`${styles.columnCenter}`}>
       <div className="opacity-40">
-        <div className="sm:text-[240px] text-[180px] sm:w-[240px] sm:h-[240px] w-[180px] h-[180px] leading-[0.9] animate-pulse sm:mb-10 mb-6 invert">
+        <div className="sm:text-[240px] text-[180px] sm:w-[240px] sm:h-[240px] w-[180px] h-[180px] leading-[0.9] animate-[crybaby_1.5s_linear_infinite_alternate] sm:mb-10 mb-6 invert">
           😭
         </div>
       </div>

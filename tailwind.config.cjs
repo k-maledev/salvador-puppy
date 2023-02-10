@@ -5,6 +5,18 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        crybaby: {
+          "0%": {
+            transform: "rotate(-2deg)",
+          },
+          "50%": {
+            opacity: 0.8,
+            transform: "rotate(0) scale(1.05)",
+          },
+          "100%": {
+            transform: "rotate(2deg)",
+          },
+        },
         "face-expression": {
           "0%, 100%": { transform: "translateY(-55%) scale(1.02)" },
           "50%": { transform: "translateY(-45%) scale(0.98)" },
