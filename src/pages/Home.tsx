@@ -1,4 +1,4 @@
-import { Description, Overview, Samples } from "../component";
+import { Overview, Samples, Description, AdoptAnimation } from "../component";
 import styles from "../style";
 
 const Home = () => {
@@ -9,6 +9,7 @@ const Home = () => {
       <Overview />
       <Samples />
       <Description />
+      <AdoptAnimation />
     </div>
   );
 };
