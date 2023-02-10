@@ -1,5 +1,7 @@
+import styles from "../style";
+
 const Adopt = () => {
-  return <div>Adopt</div>;
+  return <div className={styles.pageContainer}>Adopt</div>;
 };
 
 export default Adopt;
