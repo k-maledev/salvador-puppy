@@ -21,7 +21,7 @@ const Footer = () => {
             <small className="xs:text-sm text-xs">
               Copyright &copy; {new Date().getFullYear()} Salvador Puppy
             </small>
-            <span>모든 문의는 DM으로 부탁드립니다 🙏</span>
+            <span>살바도르 퍼피는 OpenAI의 DALL-E API를 사용합니다.</span>
           </p>
 
           <ul className="flex gap-6">
