@@ -4,7 +4,7 @@ import styles from "../style";
 
 const Home = () => {
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} sm:gap-y-48 gap-y-32`}>
       <Overview />
       <Samples />
       <Description />
