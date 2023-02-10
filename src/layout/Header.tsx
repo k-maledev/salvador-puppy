@@ -28,7 +28,7 @@ const Header = () => {
         </div>
 
         <nav
-          className={`absolute top-16 sm:right-10 right-4 transition-all shadow-sm bg-[rgba(0,0,0,0.3)] ${
+          className={`absolute top-16 sm:right-10 right-4 transition-all shadow-sm bg-[rgba(0,0,0,0.9)] ${
             isNavOpen
               ? "translate-y-0 opacity-100"
               : "-translate-y-full opacity-0"
