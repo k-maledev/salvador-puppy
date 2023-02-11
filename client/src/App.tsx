@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Home, Adopt, Reviews, Feedback, Donate } from "./pages";
+import { Home, Adopt, AdoptResult, Reviews, Feedback, Donate } from "./pages";
 import PageLayout from "./layout/PageLayout";
 
 const router = createBrowserRouter([
@@ -15,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/adopt",
         element: <Adopt />,
+      },
+      {
+        path: "/adopt-result",
+        element: <AdoptResult />,
       },
       {
         path: "/reviews",
