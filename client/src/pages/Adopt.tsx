@@ -25,6 +25,13 @@ const Adopt = () => {
     navigate("/adopt-result", {
       state: {
         imgUrl,
+        selectedOptions: {
+          breed: BREEDS.find((breed) => breed.id === selectedBreed)?.value,
+          accessory: ACCESSORIES.find((breed) => breed.id === selectedAccessory)
+            ?.value,
+          location: LOCATIONS.find((breed) => breed.id === selectedLocation)
+            ?.value,
+        },
       },
     });
   }, [selectedBreed, selectedAccessory, selectedLocation]);

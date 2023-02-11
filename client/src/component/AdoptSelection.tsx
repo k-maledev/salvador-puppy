@@ -34,7 +34,7 @@ const AdoptSelection: React.FC<{
       <button
         disabled={!selectedOption}
         onClick={onClickNext}
-        className={`${styles.buttonWhite} disabled:${styles.buttonWhiteDisabled}`}
+        className={`${styles.buttonOutlinedWhite} disabled:${styles.buttonDisabled}`}
       >
         다음
       </button>

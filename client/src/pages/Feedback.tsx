@@ -46,14 +46,15 @@ const Feedback = () => {
 
         <textarea
           onChange={(e) => setContent(e.target.value)}
-          className="w-full h-60 text-[#333] outline-none px-3 py-2 resize-none"
+          className="w-full h-60 bg-transparent  outline-none px-3 py-2 border text-[#f0f0f0] border-[#aaa] focus:border-[#f0f0f0] resize-none "
           placeholder="내용을 작성해주세요. (10글자 이상)"
           minLength={10}
+          maxLength={120}
         ></textarea>
 
         <button
           disabled={!category || content.trim().length < 10}
-          className={`${styles.buttonWhite} disabled:${styles.buttonWhiteDisabled}`}
+          className={`${styles.buttonOutlinedWhite} disabled:${styles.buttonDisabled}`}
         >
           제출하기
         </button>
