@@ -3,6 +3,14 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 import styles from "../style";
 
+const NAVLINKS = [
+  { id: 0, pathname: "/", text: "살바도르 퍼피" },
+  { id: 1, pathname: "/reviews", text: "리뷰" },
+  { id: 2, pathname: "/feedback", text: "피드백" },
+  { id: 3, pathname: "/donate", text: "후원" },
+  { id: 4, pathname: "/adopt", text: "입양하기" },
+];
+
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { pathname } = useLocation();
@@ -12,7 +20,7 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#333] h-16 border-b border-b-[#f0f0f0]">
+    <header className="fixed top-0 left-0 right-0 z-30 bg-[#333] h-16 border-b border-b-[#f0f0f0]">
       <div className={`relative h-full ${styles.container}`}>
         <div className="relative z-10 h-full py-2 flex justify-between items-center bg-[#333]">
           <Link to="/" className="font-Mansalva text-2xl cursor-pointer">
@@ -23,59 +31,44 @@ const Header = () => {
             onClick={() => setIsNavOpen((prev) => !prev)}
             className="text-2xl cursor-pointer"
           >
-            {isNavOpen ? "❌" : "🦴"}
+            🦴
           </button>
         </div>
 
-        <nav
-          className={`absolute top-16 sm:right-10 right-4 transition-all shadow-sm bg-[rgba(0,0,0,0.9)] ${
-            isNavOpen
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0"
-          }`}
-        >
-          <ul className="pt-6 pb-2 flex flex-col gap-2 text-xl">
-            <li
-              className={`mx-8 pb-2 inline-block w-fit ${
-                pathname === "/" ? "border-b border-b-white" : ""
-              }`}
-            >
-              <NavLink to="/">살바도르 퍼피</NavLink>
-            </li>
+        {isNavOpen && (
+          <div
+            className="fixed top-0 left-0 right-0 bottom-0 z-40 bg-[rgba(0,0,0,0.6)]"
+            onClick={() => setIsNavOpen(false)}
+          ></div>
+        )}
 
-            <li
-              className={`mx-8 py-3 inline-block w-fit ${
-                pathname === "/reviews" ? "border-b border-b-white" : ""
-              }`}
-            >
-              <NavLink to="/reviews">리뷰</NavLink>
-            </li>
-
-            <li
-              className={`mx-8 py-3 inline-block w-fit ${
-                pathname === "/feedback" ? "border-b border-b-white" : ""
-              }`}
-            >
-              <NavLink to="/feedback">피드백</NavLink>
-            </li>
-
-            <li
-              className={`mx-8 py-3 inline-block w-fit ${
-                pathname === "/donate" ? "border-b border-b-white" : ""
-              }`}
-            >
-              <NavLink to="/donate">후원</NavLink>
-            </li>
-
-            <li className="px-8 py-3 bg-[#ddd] text-[#000]">
-              {pathname === "/adopt" ? (
-                <span className="cursor-default">입양하기</span>
-              ) : (
-                <NavLink to="/adopt">입양하기</NavLink>
-              )}
-            </li>
-          </ul>
-        </nav>
+        {isNavOpen && (
+          <nav
+            className={`absolute z-50 top-16 sm:right-10 right-4 transition-all shadow-sm bg-[rgba(0,0,0,0.9)] ${
+              isNavOpen
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-full opacity-0"
+            }`}
+          >
+            <ul className="pt-6 pb-2 flex flex-col gap-4 text-xl">
+              {NAVLINKS.map((navlinks) => (
+                <li key={navlinks.id}>
+                  <NavLink to={navlinks.pathname} className={`px-8 py-2 block`}>
+                    <span
+                      className={`${
+                        pathname === navlinks.pathname
+                          ? "border-b border-b-white"
+                          : ""
+                      }}`}
+                    >
+                      {navlinks.text}
+                    </span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
   );
