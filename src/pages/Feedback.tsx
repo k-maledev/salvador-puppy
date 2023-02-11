@@ -53,7 +53,7 @@ const Feedback = () => {
 
         <button
           disabled={!category || content.trim().length < 10}
-          className={`${styles.buttonWhite} transition-all disabled:bg-gray-600 text-gray-500 disabled:cursor-not-allowed`}
+          className={`${styles.buttonWhite} disabled:${styles.buttonWhiteDisabled}`}
         >
           제출하기
         </button>
