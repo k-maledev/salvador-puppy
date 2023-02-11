@@ -19,6 +19,10 @@ const Header = () => {
     setIsNavOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = isNavOpen ? "hidden" : "unset";
+  }, [isNavOpen]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-30 bg-[#333] h-16 border-b border-b-[#f0f0f0]">
       <div className={`relative h-full ${styles.container}`}>
