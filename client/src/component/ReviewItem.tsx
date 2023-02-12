@@ -1,7 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ReviewData } from "../types";
+import placeholder from "../assets/placeholder.png";
 
 const ReviewItem: React.FC<ReviewData> = ({
   _id,
@@ -10,6 +11,8 @@ const ReviewItem: React.FC<ReviewData> = ({
   dogname,
   reviewContent,
 }) => {
+  const [loaded, setLoaded] = useState(false);
+
   const navigate = useNavigate();
 
   const handleClick = useCallback(async () => {
@@ -22,9 +25,10 @@ const ReviewItem: React.FC<ReviewData> = ({
       className="flex justify-between xs:gap-4 gap-2 w-full py-3 border-b border-[#aaa] cursor-pointer"
     >
       <img
-        src={imgUrl}
+        src={loaded ? imgUrl : placeholder}
+        onLoad={() => setLoaded(true)}
         alt={dogname}
-        className="sm:w-28 sm:h-28 xs:w-24 xs:h-24 w-20 h-20 rounded-xl"
+        className="sm:w-28 sm:h-28 xs:w-24 xs:h-24 w-20 h-20 rounded-md"
       />
 
       <div className="w-full">

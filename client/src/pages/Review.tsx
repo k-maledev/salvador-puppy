@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 import { getReview } from "../api/review";
 import styles from "../style";
 import { ReviewData } from "../types";
+import placeholder from "../assets/placeholder.png";
 
 const Review = () => {
   const [review, setReview] = useState<ReviewData>();
+  const [loaded, setLoaded] = useState(false);
 
   const { reviewId } = useParams();
 
@@ -32,16 +34,18 @@ const Review = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <h2 className={styles.pageHeading}>
-        <span className="text-blue-500">{review.username}</span>님의 리뷰
-      </h2>
-
       <img
-        src={review.imgUrl}
+        src={loaded ? review.imgUrl : placeholder}
+        onLoad={() => setLoaded(true)}
         alt={review.dogname}
         className="w-full max-w-sm mb-6"
       />
-      <h3 className="text-lg border py-1 px-3 mb-4">{review.dogname}</h3>
+
+      <p className="text-lg border py-1 px-3 mb-6">{review.dogname}</p>
+
+      <h2 className="text-2xl mb-4">
+        <span className="text-blue-500">{review.username}</span>님의 리뷰
+      </h2>
 
       <p className="xs:text-lg text-sm">{review.reviewContent}</p>
     </div>
