@@ -8,7 +8,7 @@ const NAVLINKS = [
   { id: 1, pathname: "/reviews", text: "리뷰" },
   { id: 2, pathname: "/feedback", text: "피드백" },
   { id: 3, pathname: "/donate", text: "후원" },
-  { id: 4, pathname: "/adopt", text: "입양하기" },
+  { id: 4, pathname: "/create", text: "생성하기" },
 ];
 
 const Header = () => {

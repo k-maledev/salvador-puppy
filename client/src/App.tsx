@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Home, Adopt, AdoptResult, Reviews, Feedback, Donate } from "./pages";
+import { Home, Create, CreateResult, Reviews, Feedback, Donate } from "./pages";
 import PageLayout from "./layout/PageLayout";
 
 const router = createBrowserRouter([
@@ -13,12 +13,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/adopt",
-        element: <Adopt />,
+        path: "/create",
+        element: <Create />,
       },
       {
-        path: "/adopt-result",
-        element: <AdoptResult />,
+        path: "/create-result",
+        element: <CreateResult />,
       },
       {
         path: "/reviews",

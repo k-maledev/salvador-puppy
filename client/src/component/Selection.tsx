@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 
 import styles from "../style";
 
-const AdoptSelection: React.FC<{
+const Selection: React.FC<{
   title: string;
   options: { id: string; value: string }[];
   selectedOption: string;
@@ -42,4 +42,4 @@ const AdoptSelection: React.FC<{
   );
 };
 
-export default AdoptSelection;
+export default Selection;

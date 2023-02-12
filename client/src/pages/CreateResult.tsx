@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import styles from "../style";
 
-const AdoptResult = () => {
+const CreateResult = () => {
   const [username, setUsername] = useState("");
   const [dogname, setDogname] = useState("");
   const [reviewContent, setReviewContent] = useState("");
@@ -31,7 +31,7 @@ const AdoptResult = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <h2 className={styles.pageHeading}>생성 완료! 많이 예뻐해주세요~</h2>
+      <h2 className={styles.pageHeading}>많이 예뻐해주세요 💘</h2>
 
       <div>
         <img src={imgUrl} alt="사이버 반려견" className="max-w-md w-full" />
@@ -48,7 +48,7 @@ const AdoptResult = () => {
         onSubmit={handleSubmit}
       >
         <h4 className="text-xl mb-6 w-full text-center py-2 bg-[#777]">
-          입양 후기
+          후기 남기기
         </h4>
 
         <div className="flex flex-col gap-2 w-full max-w-sm mb-6">
@@ -75,7 +75,7 @@ const AdoptResult = () => {
             maxLength={12}
             value={dogname}
             onChange={(e) => setDogname(e.target.value)}
-            placeholder="장크로다일"
+            placeholder="가디"
           />
         </div>
 
@@ -112,4 +112,4 @@ const AdoptResult = () => {
   );
 };
 
-export default AdoptResult;
+export default CreateResult;

@@ -15,7 +15,7 @@ const Donate = () => {
       <p className="max-w-md xs:text-lg text-md">
         사이버 반려견을 한 마리 생성할 때마다{" "}
         <strong className="text-red-500">약 25원</strong>이 사용됩니다. 외로운
-        사람들을 최대한 많이 돕고자 입양 회수 제한을 두지 않았습니다.
+        사람들을 최대한 많이 돕고자 생성 회수 제한을 두지 않았습니다.
         <br />
         <br />
         의도치 않게 너무 많은 강아지를 생성하셨다면, 위{" "}

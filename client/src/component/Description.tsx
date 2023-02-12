@@ -10,10 +10,10 @@ const Description = () => {
           {" "}
           사이버 반려견
         </strong>
-        을 생성해주는 <br />
+        을 만나게 해주는 <br />
         <span className="inline-block sm:text-2xl text-xl mt-2">
           <strong className="border-b font-normal">취향 기반</strong> 사이버
-          반려견 입양 서비스
+          반려견 생성 서비스
         </span>
       </p>
     </section>

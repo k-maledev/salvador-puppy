@@ -32,8 +32,9 @@ const Feedback = () => {
             onChange={(e) => setCategory(e.target.value)}
             className="w-full appearance-none bg-transparent border-b border-b-[#f0f0f0] px-2 py-2 outline-none cursor-pointer"
             placeholder="카테고리를 선택해주세요."
+            defaultValue=""
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               카테고리를 선택해주세요.
             </option>
             {CATEGORIES.map((category) => (

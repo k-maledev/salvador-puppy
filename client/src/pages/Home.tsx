@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Overview, Samples, Description, AdoptAnimation } from "../component";
+import { Overview, Samples, Description, MeetingAnimation } from "../component";
 import styles from "../style";
 
 const Home = () => {
@@ -8,13 +8,13 @@ const Home = () => {
       <Overview />
       <Samples />
       <Description />
-      <AdoptAnimation />
+      <MeetingAnimation />
 
       <div
         className={`xs:flex-row xs:justify-center ${styles.columnCenter} gap-4 xs:w-full w-[80%]`}
       >
-        <Link to="/adopt" className={styles.buttonWhite}>
-          입양하기
+        <Link to="/create" className={styles.buttonWhite}>
+          생성하기
         </Link>
         <Link to="/reviews" className={styles.buttonOutlinedWhite}>
           리뷰 보기

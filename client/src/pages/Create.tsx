@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AdoptSelection } from "../component";
+import { Selection } from "../component";
 import { imageGeneration } from "../api/image-generation";
 import { BREEDS, ACCESSORIES, LOCATIONS } from "../constants";
 import styles from "../style";
 
-const Adopt = () => {
+const Create = () => {
   const [showingSelectionId, setShowingSelectionId] = useState<
     "breed" | "accessory" | "location"
   >("breed");
@@ -22,7 +22,7 @@ const Adopt = () => {
 
     const imgUrl = await imageGeneration(prompt);
 
-    navigate("/adopt-result", {
+    navigate("/create-result", {
       state: {
         imgUrl,
         selectedOptions: {
@@ -40,7 +40,7 @@ const Adopt = () => {
   switch (showingSelectionId) {
     case "breed":
       showingSelection = (
-        <AdoptSelection
+        <Selection
           title="견종"
           options={BREEDS}
           selectedOption={selectedBreed}
@@ -51,7 +51,7 @@ const Adopt = () => {
       break;
     case "accessory":
       showingSelection = (
-        <AdoptSelection
+        <Selection
           title="악세사리"
           options={ACCESSORIES}
           selectedOption={selectedAccessory}
@@ -62,7 +62,7 @@ const Adopt = () => {
       break;
     case "location":
       showingSelection = (
-        <AdoptSelection
+        <Selection
           title="장소"
           options={LOCATIONS}
           selectedOption={selectedLocation}
@@ -78,11 +78,11 @@ const Adopt = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 입양</h2>
+      <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
 
       {showingSelection}
     </div>
   );
 };
 
-export default Adopt;
+export default Create;

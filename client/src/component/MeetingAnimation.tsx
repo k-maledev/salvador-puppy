@@ -1,6 +1,6 @@
 import styles from "../style";
 
-const AdoptAnimation = () => {
+const MeetingAnimation = () => {
   return (
     <section className={`${styles.columnCenter} sm:w-[90%] w-[80%]`}>
       <div className="relative w-[85%] sm:h-32 xs:h-24 h-20 overflow-hidden border-b-2 border-[rgba(0,0,0,0.1)]">
@@ -18,4 +18,4 @@ const AdoptAnimation = () => {
   );
 };
 
-export default AdoptAnimation;
+export default MeetingAnimation;
