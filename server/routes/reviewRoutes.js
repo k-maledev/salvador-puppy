@@ -21,6 +21,19 @@ router.route("/").get(async (req, res) => {
   }
 });
 
+router.route("/:id").get(async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+    res.status(200).json({ success: true, data: review });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "후기를 불러들이는 데 실패했습니다. 다시 시도해주세요.",
+    });
+  }
+});
+
 router.route("/").post(async (req, res) => {
   try {
     const { image, username, dogname, reviewContent } = req.body;

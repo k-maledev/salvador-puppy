@@ -4,9 +4,13 @@ import { NewReview } from "../types";
 export const getReviews = async () => {
   const response = await fetch(`${SERVER_URL}/api/review`);
 
-  const { data } = await response.json();
+  return response.json();
+};
 
-  return data.reverse();
+export const getReview = async (id: string) => {
+  const response = await fetch(`${SERVER_URL}/api/review/${id}`);
+
+  return response.json();
 };
 
 export const createReview = async (review: NewReview) => {

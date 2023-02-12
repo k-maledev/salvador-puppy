@@ -1,13 +1,26 @@
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { ReviewData } from "../types";
 
 const ReviewItem: React.FC<ReviewData> = ({
+  _id,
   imgUrl,
   username,
   dogname,
   reviewContent,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = useCallback(async () => {
+    navigate(`/reviews/${_id}`);
+  }, [_id]);
+
   return (
-    <li className="flex justify-between xs:gap-4 gap-2 w-full py-3 border-b border-[#aaa]">
+    <li
+      onClick={handleClick}
+      className="flex justify-between xs:gap-4 gap-2 w-full py-3 border-b border-[#aaa] cursor-pointer"
+    >
       <img
         src={imgUrl}
         alt={dogname}
@@ -15,9 +28,9 @@ const ReviewItem: React.FC<ReviewData> = ({
       />
 
       <div className="w-full">
-        <p className="xs:text-sm text-xs">
-          <strong className="font-medium xs:text-md text-xs">{username}</strong>{" "}
-          님의 사이버 반려견
+        <p>
+          <strong className="font-medium xs:text-md text-sm">{username}</strong>
+          <span className="xs:text-sm text-xs">님의 사이버 반려견</span>
         </p>
 
         <h4 className="xs:text-lg text-xs font-semibold text-blue-500">

@@ -6,7 +6,7 @@ export interface NewReview {
 }
 
 export interface ReviewData {
-  _id?: string;
+  _id: string;
   imgUrl: string;
   username: string;
   dogname: string;
