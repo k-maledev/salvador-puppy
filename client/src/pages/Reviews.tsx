@@ -6,7 +6,7 @@ import styles from "../style";
 import { ReviewData } from "../types";
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState<ReviewData[]>([]);
+  const [reviews, setReviews] = useState<ReviewData[]>();
 
   const loadReviews = async () => {
     try {
@@ -22,21 +22,30 @@ const Reviews = () => {
     loadReviews();
   }, []);
 
+  if (reviews === undefined) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className={styles.pageContainer}>
       <h2 className={styles.pageHeading}>리뷰</h2>
-      <ul className="flex flex-col w-full">
-        {reviews.map((review) => (
-          <ReviewItem
-            key={review._id}
-            _id={review._id}
-            imgUrl={review.imgUrl}
-            username={review.username}
-            dogname={review.dogname}
-            reviewContent={review.reviewContent}
-          />
-        ))}
-      </ul>
+
+      {reviews.length === 0 ? (
+        <p>리뷰가 없습니다.</p>
+      ) : (
+        <ul className="flex flex-col w-full">
+          {reviews.map((review) => (
+            <ReviewItem
+              key={review._id}
+              _id={review._id}
+              imgUrl={review.imgUrl}
+              username={review.username}
+              dogname={review.dogname}
+              reviewContent={review.reviewContent}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
