@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "npm install; nodemon index"
   },
   "keywords": [],
   "author": "",
