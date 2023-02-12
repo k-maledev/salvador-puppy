@@ -1,5 +1,7 @@
 import { FormEvent, useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { sendFeedback } from "../api";
 import styles from "../style";
 
 const CATEGORIES = [
@@ -13,12 +15,21 @@ const Feedback = () => {
   const [category, setCategory] = useState<string>("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const navigate = useNavigate();
 
-    console.log(category);
-    console.log(content);
-  }, []);
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      const response = await sendFeedback(category, content);
+
+      if (response.success) {
+        alert("피드백이 전송되었습니다. 감사합니다.");
+        navigate("/");
+      }
+    },
+    [category, content]
+  );
 
   return (
     <div className={styles.pageContainer}>

@@ -4,6 +4,7 @@ import cors from "cors";
 
 import dalleRoutes from "./routes/dalleRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
+import feedbackRoutes from "./routes/feedbackRoutes.js";
 import connectDB from "./mongodb/connect.js";
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json({ limit: "50mb" }));
 
 app.use("/api/dalle", dalleRoutes);
 app.use("/api/review", reviewRoutes);
+app.use("/api/feedback", feedbackRoutes);
 
 app.get("/", (req, res) => {
   res.send("Salvador Puppy 서버입니다.");

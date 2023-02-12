@@ -35,7 +35,7 @@ const CreateResult = () => {
 
       const response = await createReview(data);
 
-      if (response) navigate("/reviews");
+      if (response.success) navigate("/reviews");
     },
     [image, username, dogname, reviewContent]
   );

@@ -25,10 +25,7 @@ const ReviewItem: React.FC<ReviewData> = ({
         </h4>
 
         <p className="xs:text-sm text-xs break-all sm:line-clamp-3 xs:line-clamp-2 line-clamp-3">
-          {reviewContent} Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Eos beatae animi amet iste. Exercitationem perferendis nobis
-          praesentium, at corrupti fugit, magni totam sint, voluptates cumque
-          ratione! Repellat rerum officia ratione.
+          {reviewContent}
         </p>
       </div>
     </li>
