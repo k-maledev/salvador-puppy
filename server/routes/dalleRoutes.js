@@ -20,11 +20,12 @@ router.route("/").post(async (req, res) => {
       prompt,
       n: 1,
       size: "1024x1024",
+      response_format: "b64_json",
     });
 
-    const imageUrl = dalleResponse.data.data[0].url;
+    const image = dalleResponse.data.data[0].b64_json;
 
-    res.status(200).json({ imageUrl });
+    res.status(200).json({ image });
   } catch (error) {
     console.log(error);
     res.status(500).send(error.response.data.error.message);

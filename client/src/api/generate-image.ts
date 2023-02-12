@@ -1,6 +1,6 @@
 import { SERVER_URL } from "./config";
 
-export const imageGeneration = async (prompt: string) => {
+export const generateImage = async (prompt: string) => {
   const response = await fetch(`${SERVER_URL}/api/dalle`, {
     method: "POST",
     headers: {
@@ -11,5 +11,6 @@ export const imageGeneration = async (prompt: string) => {
     }),
   });
 
-  return response.text();
+  const { image } = await response.json();
+  return `data:image/jpeg;base64,${image}`;
 };

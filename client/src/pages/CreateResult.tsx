@@ -1,10 +1,11 @@
 import { FormEvent, useCallback, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { saveAs } from "file-saver";
 
+import { createReview } from "../api";
 import styles from "../style";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CreateResult = () => {
   const [username, setUsername] = useState("");
@@ -12,28 +13,30 @@ const CreateResult = () => {
   const [reviewContent, setReviewContent] = useState("");
 
   const { state } = useLocation();
+  const navigate = useNavigate();
 
-  const { imgUrl, selectedOptions } = state;
+  const { image, selectedOptions } = state;
 
   const handleDownload = useCallback(() => {
-    saveAs(imgUrl, "image.png");
-  }, [imgUrl]);
+    saveAs(image, "image.jpeg");
+  }, [image]);
 
   const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       const data = {
-        imgUrl,
-        selectedOptions,
+        image,
         username,
         dogname,
         reviewContent,
       };
 
-      console.log(data);
+      const response = await createReview(data);
+
+      if (response) navigate("/reviews");
     },
-    [imgUrl, selectedOptions, username, dogname, reviewContent]
+    [image, username, dogname, reviewContent]
   );
 
   return (
@@ -42,7 +45,7 @@ const CreateResult = () => {
 
       <div className="relative">
         <img
-          src={imgUrl}
+          src={image}
           alt="사이버 반려견"
           className="max-w-md w-full border border-b-0"
         />

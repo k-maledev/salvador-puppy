@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { Selection } from "../component";
-import { imageGeneration } from "../api/image-generation";
+import { generateImage } from "../api";
 import { BREEDS, ACCESSORIES, LOCATIONS } from "../constants";
 import styles from "../style";
 
@@ -30,11 +30,11 @@ const Create = () => {
   const handleSubmit = useCallback(async () => {
     const prompt = `${selectedBreed}, ${selectedAccessory}, ${selectedLocation}, photo`;
 
-    const imgUrl = await imageGeneration(prompt);
+    const image = await generateImage(prompt);
 
     navigate("/create-result", {
       state: {
-        imgUrl,
+        image,
         selectedOptions: {
           breed: BREEDS.find((breed) => breed.id === selectedBreed)?.value,
           accessory: ACCESSORIES.find((breed) => breed.id === selectedAccessory)
