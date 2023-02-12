@@ -7,7 +7,7 @@ const Donate = () => {
   return (
     <>
       <Helmet>
-        <meta property="title" content="후원하기 - 살바도르 퍼피" />
+        <title>후원하기 - 살바도르 퍼피</title>
       </Helmet>
       <div className={styles.pageContainer}>
         <h2 className={styles.pageHeading}>살바도르 퍼피 후원하기</h2>

@@ -30,7 +30,7 @@ const Reviews = () => {
   return (
     <>
       <Helmet>
-        <meta property="title" content="리뷰 - 살바도르 퍼피" />
+        <title>고객 리뷰 - 살바도르 퍼피</title>
       </Helmet>
       <div className={styles.pageContainer}>
         <h2 className={styles.pageHeading}>리뷰</h2>

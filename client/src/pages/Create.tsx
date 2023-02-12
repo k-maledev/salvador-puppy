@@ -109,9 +109,8 @@ const Create = () => {
   return (
     <>
       <Helmet>
-        <meta property="title" content="사이버 반려견 생성 - 살바도르 퍼피" />
+        <title>사이버 반려견 생성 - 살바도르 퍼피</title>
       </Helmet>
-
       <div className={`${styles.pageContainer} relative`}>
         <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
 

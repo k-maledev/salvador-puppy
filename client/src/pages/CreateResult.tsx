@@ -58,9 +58,8 @@ const CreateResult = () => {
   return (
     <>
       <Helmet>
-        <meta property="title" content="생성 완료 - 살바도르 퍼피" />
+        <title>생성 완료 - 살바도르 퍼피</title>
       </Helmet>
-
       <div className={styles.pageContainer}>
         <h2 className={styles.pageHeading}>많이 예뻐해주세요 💘</h2>
 

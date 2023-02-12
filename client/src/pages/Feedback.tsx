@@ -46,9 +46,8 @@ const Feedback = () => {
   return (
     <>
       <Helmet>
-        <meta property="title" content="피드백 남기기 - 살바도르 퍼피" />
+        <title>피드백 남기기 - 살바도르 퍼피</title>
       </Helmet>
-
       <div className={styles.pageContainer}>
         <h3 className={styles.pageHeading}>피드백을 남겨주세요.</h3>
         <form

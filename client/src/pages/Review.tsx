@@ -36,9 +36,8 @@ const Review = () => {
   return (
     <>
       <Helmet>
-        <meta property="title" content={`${review.dogname} - 살바도르 퍼피`} />
+        <title>{review.dogname} - 살바도르 퍼피</title>
       </Helmet>
-
       <div className={styles.pageContainer}>
         <img
           src={loaded ? review.imgUrl : placeholder}
@@ -54,7 +53,7 @@ const Review = () => {
         </h2>
 
         <p className="xs:text-lg text-sm">{review.reviewContent}</p>
-      </div>
+      </div>{" "}
     </>
   );
 };
