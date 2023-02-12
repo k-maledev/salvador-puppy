@@ -59,9 +59,12 @@ const Create = () => {
     }
   }, [selectedBreed, selectedAccessory, selectedLocation]);
 
+  let showingStage = 1;
   let showingSelection;
+
   switch (showingSelectionId) {
     case "breed":
+      showingStage = 1;
       showingSelection = (
         <Selection
           title="견종"
@@ -73,6 +76,7 @@ const Create = () => {
       );
       break;
     case "accessory":
+      showingStage = 2;
       showingSelection = (
         <Selection
           title="악세사리"
@@ -84,6 +88,7 @@ const Create = () => {
       );
       break;
     case "location":
+      showingStage = 3;
       showingSelection = (
         <Selection
           title="장소"
@@ -91,6 +96,7 @@ const Create = () => {
           selectedOption={selectedLocation}
           setSelectedOption={setSelectedLocation}
           onClickNext={handleSubmit}
+          isLastStage
         />
       );
       break;
@@ -102,6 +108,8 @@ const Create = () => {
   return (
     <div className={`${styles.pageContainer} relative`}>
       <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
+
+      <span className="mb-2">{showingStage} / 3 단계</span>
       {showingSelection}
 
       {(showingSelectionId === "accessory" ||

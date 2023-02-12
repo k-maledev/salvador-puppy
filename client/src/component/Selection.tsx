@@ -8,7 +8,15 @@ const Selection: React.FC<{
   selectedOption: string;
   setSelectedOption: Dispatch<SetStateAction<string>>;
   onClickNext: () => void;
-}> = ({ title, options, selectedOption, setSelectedOption, onClickNext }) => {
+  isLastStage?: boolean;
+}> = ({
+  title,
+  options,
+  selectedOption,
+  setSelectedOption,
+  onClickNext,
+  isLastStage,
+}) => {
   return (
     <section className={styles.columnCenter}>
       <h4 className="text-2xl text-red-500 xs:mb-12 mb-8">{title}</h4>
@@ -33,9 +41,11 @@ const Selection: React.FC<{
       <button
         disabled={!selectedOption}
         onClick={onClickNext}
-        className={`${styles.buttonOutlinedWhite} disabled:${styles.buttonDisabled}`}
+        className={`${
+          isLastStage ? styles.buttonWhite : styles.buttonOutlinedWhite
+        }`}
       >
-        다음
+        {isLastStage ? "생성" : "다음"}
       </button>
     </section>
   );

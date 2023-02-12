@@ -77,7 +77,7 @@ const Feedback = () => {
 
         <button
           disabled={!category || content.trim().length < 10}
-          className={`${styles.buttonOutlinedWhite} disabled:${styles.buttonDisabled}`}
+          className={styles.buttonOutlinedWhite}
         >
           제출하기
         </button>

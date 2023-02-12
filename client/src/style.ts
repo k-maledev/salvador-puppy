@@ -7,11 +7,9 @@ const styles = {
   flexCenter: "flex justify-center items-center",
   columnCenter: "flex flex-col items-center",
   buttonWhite:
-    "xs:w-auto w-full xs:text-xl text-lg xs:px-10 px-4 xs:py-3 py-2 rounded-lg text-center font-medium tracking-widest transition-all drop-shadow-lg hover:drop-shadow-xl cursor-pointer hover:translate-y-[-4%] active:translate-y-[-2%] transition-all duration-100 bg-white text-[#333]",
+    "xs:w-auto w-full xs:text-xl text-lg xs:px-10 px-4 xs:py-2.5 py-1.5 rounded-lg text-center font-medium tracking-widest transition-all drop-shadow-lg hover:drop-shadow-xl cursor-pointer hover:translate-y-[-4%] active:translate-y-[-2%] transition-all duration-100 bg-white text-[#333] disabled:bg-gray-900 disabled:border disabled:border-gray-700 disabled:text-gray-700 disabled:cursor-not-allowed disabled:transform-none disabled:drop-shadow-none",
   buttonOutlinedWhite:
-    "xs:w-auto w-full xs:text-xl text-lg xs:px-10 px-4 xs:py-3 py-2 rounded-lg text-center font-medium tracking-widest transition-all drop-shadow-lg hover:drop-shadow-xl cursor-pointer hover:translate-y-[-4%] active:translate-y-[-2%] transition-all duration-100 border-2 border-[#f0f0f0] text-[#f0f0f0]",
-  buttonDisabled:
-    "disabled:bg-gray-600 disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:drop-shadow-none",
+    "xs:w-auto w-full xs:text-xl text-lg xs:px-10 px-4 xs:py-2.5 py-1.5 rounded-lg text-center font-medium tracking-widest transition-all drop-shadow-lg hover:drop-shadow-xl cursor-pointer hover:translate-y-[-4%] active:translate-y-[-2%] transition-all duration-100 border-2 border-[#f0f0f0] text-[#f0f0f0] disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:drop-shadow-none",
 };
 
 export default styles;

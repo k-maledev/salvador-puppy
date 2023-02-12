@@ -134,7 +134,7 @@ const CreateResult = () => {
             dogname.trim().length < 2 ||
             reviewContent.trim().length < 10
           }
-          className={`${styles.buttonOutlinedWhite} disabled:${styles.buttonDisabled}`}
+          className={styles.buttonOutlinedWhite}
         >
           작성완료
         </button>
