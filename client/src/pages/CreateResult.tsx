@@ -65,7 +65,10 @@ const CreateResult = () => {
           className="max-w-md w-full border border-b-0"
         />
 
-        <button className="absolute bottom-3 right-4" onClick={handleDownload}>
+        <button
+          className="absolute bottom-3 right-4 lg:block hidden"
+          onClick={handleDownload}
+        >
           <FontAwesomeIcon icon={faDownload} />
         </button>
       </div>
