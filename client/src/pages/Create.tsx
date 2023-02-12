@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { Selection } from "../component";
 import { imageGeneration } from "../api/image-generation";
@@ -16,6 +18,14 @@ const Create = () => {
   const [selectedLocation, setSelectedLocation] = useState<string>("");
 
   const navigate = useNavigate();
+
+  const handleClickPrev = useCallback(() => {
+    if (showingSelectionId === "accessory") {
+      setShowingSelectionId("breed");
+    } else if (showingSelectionId === "location") {
+      setShowingSelectionId("accessory");
+    }
+  }, [showingSelectionId]);
 
   const handleSubmit = useCallback(async () => {
     const prompt = `${selectedBreed}, ${selectedAccessory}, ${selectedLocation}, photo`;
@@ -77,10 +87,19 @@ const Create = () => {
   }
 
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} relative`}>
       <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
-
       {showingSelection}
+
+      {(showingSelectionId === "accessory" ||
+        showingSelectionId === "location") && (
+        <button
+          className="absolute left-6 top-1.5 w-8 h-8"
+          onClick={handleClickPrev}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
+        </button>
+      )}
     </div>
   );
 };

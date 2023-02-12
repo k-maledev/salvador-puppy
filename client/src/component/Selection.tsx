@@ -30,7 +30,6 @@ const Selection: React.FC<{
           </li>
         ))}
       </ul>
-
       <button
         disabled={!selectedOption}
         onClick={onClickNext}
