@@ -1,7 +1,10 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { saveAs } from "file-saver";
 
 import styles from "../style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CreateResult = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +14,10 @@ const CreateResult = () => {
   const { state } = useLocation();
 
   const { imgUrl, selectedOptions } = state;
+
+  const handleDownload = useCallback(() => {
+    saveAs(imgUrl, "image.png");
+  }, [imgUrl]);
 
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
@@ -33,8 +40,16 @@ const CreateResult = () => {
     <div className={styles.pageContainer}>
       <h2 className={styles.pageHeading}>많이 예뻐해주세요 💘</h2>
 
-      <div>
-        <img src={imgUrl} alt="사이버 반려견" className="max-w-md w-full" />
+      <div className="relative">
+        <img
+          src={imgUrl}
+          alt="사이버 반려견"
+          className="max-w-md w-full border border-b-0"
+        />
+
+        <button className="absolute bottom-3 right-4" onClick={handleDownload}>
+          <FontAwesomeIcon icon={faDownload} />
+        </button>
       </div>
 
       <ul className="flex flex-col gap-2 mb-12 max-w-md w-full py-2 pl-4 border border-t-0">
