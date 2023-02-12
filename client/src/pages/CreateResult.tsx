@@ -1,5 +1,6 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { saveAs } from "file-saver";
@@ -7,11 +8,14 @@ import { saveAs } from "file-saver";
 import { createReview } from "../api";
 import styles from "../style";
 import { NewReview } from "../types";
+import { loadingState } from "../recoil";
 
 const CreateResult = () => {
   const [username, setUsername] = useState("");
   const [dogname, setDogname] = useState("");
   const [reviewContent, setReviewContent] = useState("");
+
+  const setLoading = useSetRecoilState(loadingState);
 
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -33,9 +37,17 @@ const CreateResult = () => {
         reviewContent,
       };
 
-      const response = await createReview(data);
+      try {
+        const response = await createReview(data);
 
-      if (response.success) navigate("/reviews");
+        if (response.success) {
+          setLoading(false);
+          navigate("/reviews");
+        }
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
     },
     [image, username, dogname, reviewContent]
   );

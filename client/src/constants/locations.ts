@@ -18,7 +18,6 @@ export const LOCATIONS = [
   { id: "at hot springs", value: "온천" },
   { id: "in a future city", value: "미래도시" },
   { id: "in a ski resort", value: "스키장" },
-  { id: "in Gomorrah", value: "고모라" },
   { id: "in Santorini island", value: "산토리니 섬" },
   { id: "in a fitness center", value: "헬스장" },
 ];

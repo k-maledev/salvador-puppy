@@ -1,7 +1,9 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { sendFeedback } from "../api";
+import { loadingState } from "../recoil";
 import styles from "../style";
 
 const CATEGORIES = [
@@ -15,17 +17,26 @@ const Feedback = () => {
   const [category, setCategory] = useState<string>("");
   const [content, setContent] = useState("");
 
+  const setLoading = useSetRecoilState(loadingState);
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      const response = await sendFeedback(category, content);
+      setLoading(true);
 
-      if (response.success) {
-        alert("피드백이 전송되었습니다. 감사합니다.");
-        navigate("/");
+      try {
+        const response = await sendFeedback(category, content);
+
+        if (response.success) {
+          setLoading(false);
+          alert("피드백이 전송되었습니다. 감사합니다.");
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
       }
     },
     [category, content]

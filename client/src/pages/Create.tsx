@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,6 +8,7 @@ import { Selection } from "../component";
 import { generateImage } from "../api";
 import { BREEDS, ACCESSORIES, LOCATIONS } from "../constants";
 import styles from "../style";
+import { loadingState } from "../recoil";
 
 const Create = () => {
   const [showingSelectionId, setShowingSelectionId] = useState<
@@ -16,6 +18,8 @@ const Create = () => {
   const [selectedBreed, setSelectedBreed] = useState<string>("");
   const [selectedAccessory, setSelectedAccessory] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
+
+  const setLoading = useSetRecoilState(loadingState);
 
   const navigate = useNavigate();
 
@@ -28,22 +32,31 @@ const Create = () => {
   }, [showingSelectionId]);
 
   const handleSubmit = useCallback(async () => {
+    setLoading(true);
+
     const prompt = `${selectedBreed}, ${selectedAccessory}, ${selectedLocation}, photo`;
 
-    const image = await generateImage(prompt);
+    try {
+      const image = await generateImage(prompt);
+      setLoading(false);
 
-    navigate("/create-result", {
-      state: {
-        image,
-        selectedOptions: {
-          breed: BREEDS.find((breed) => breed.id === selectedBreed)?.value,
-          accessory: ACCESSORIES.find((breed) => breed.id === selectedAccessory)
-            ?.value,
-          location: LOCATIONS.find((breed) => breed.id === selectedLocation)
-            ?.value,
+      navigate("/create-result", {
+        state: {
+          image,
+          selectedOptions: {
+            breed: BREEDS.find((breed) => breed.id === selectedBreed)?.value,
+            accessory: ACCESSORIES.find(
+              (breed) => breed.id === selectedAccessory
+            )?.value,
+            location: LOCATIONS.find((breed) => breed.id === selectedLocation)
+              ?.value,
+          },
         },
-      },
-    });
+      });
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   }, [selectedBreed, selectedAccessory, selectedLocation]);
 
   let showingSelection;
