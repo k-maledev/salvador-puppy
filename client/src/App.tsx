@@ -53,7 +53,7 @@ const App = () => {
   return (
     <>
       <RecoilRoot>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </RecoilRoot>
     </>
   );
