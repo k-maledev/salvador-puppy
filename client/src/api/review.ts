@@ -1,13 +1,15 @@
 import { SERVER_URL } from "./config";
+import { NewReview } from "../types";
 
-interface Review {
-  image: string;
-  username: string;
-  dogname: string;
-  reviewContent: string;
-}
+export const getReviews = async () => {
+  const response = await fetch(`${SERVER_URL}/api/review`);
 
-export const createReview = async (review: Review) => {
+  const { data } = await response.json();
+
+  return data.reverse();
+};
+
+export const createReview = async (review: NewReview) => {
   const { image, username, dogname, reviewContent } = review;
 
   const response = await fetch(`${SERVER_URL}/api/review`, {

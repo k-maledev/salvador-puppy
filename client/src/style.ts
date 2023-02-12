@@ -1,7 +1,7 @@
 const styles = {
   pageContainer:
     "max-w-2xl mx-auto sm:px-10 flex flex-col items-center px-4 sm:mt-32 mt-16 sm:mb-40 mb-24",
-  container: "max-w-2xl mx-auto sm:px-10 px-4",
+  container: "w-full max-w-2xl mx-auto sm:px-10 px-4",
   pageHeading: "xs:text-3xl text-2xl pb-6",
   absoluteCenter: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
   flexCenter: "flex justify-center items-center",

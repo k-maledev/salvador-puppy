@@ -1,4 +1,4 @@
 import { generateImage } from "./generate-image";
-import { createReview } from "./create-review";
+import { getReviews, createReview } from "./review";
 
-export { generateImage, createReview };
+export { generateImage, getReviews, createReview };

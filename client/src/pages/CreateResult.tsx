@@ -6,6 +6,7 @@ import { saveAs } from "file-saver";
 
 import { createReview } from "../api";
 import styles from "../style";
+import { NewReview } from "../types";
 
 const CreateResult = () => {
   const [username, setUsername] = useState("");
@@ -25,7 +26,7 @@ const CreateResult = () => {
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      const data = {
+      const data: NewReview = {
         image,
         username,
         dogname,

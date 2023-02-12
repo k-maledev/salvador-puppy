@@ -51,5 +51,5 @@ module.exports = {
       Mansalva: ["Mansalva", "cursive"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
