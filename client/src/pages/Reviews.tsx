@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 import { ReviewItem } from "../component";
 import { getReviews } from "../api";
@@ -27,26 +28,31 @@ const Reviews = () => {
   }
 
   return (
-    <div className={styles.pageContainer}>
-      <h2 className={styles.pageHeading}>리뷰</h2>
+    <>
+      <Helmet>
+        <meta property="title" content="리뷰 - 살바도르 퍼피" />
+      </Helmet>
+      <div className={styles.pageContainer}>
+        <h2 className={styles.pageHeading}>리뷰</h2>
 
-      {reviews.length === 0 ? (
-        <p>리뷰가 없습니다.</p>
-      ) : (
-        <ul className="flex flex-col w-full">
-          {reviews.map((review) => (
-            <ReviewItem
-              key={review._id}
-              _id={review._id}
-              imgUrl={review.imgUrl}
-              username={review.username}
-              dogname={review.dogname}
-              reviewContent={review.reviewContent}
-            />
-          ))}
-        </ul>
-      )}
-    </div>
+        {reviews.length === 0 ? (
+          <p>리뷰가 없습니다.</p>
+        ) : (
+          <ul className="flex flex-col w-full">
+            {reviews.map((review) => (
+              <ReviewItem
+                key={review._id}
+                _id={review._id}
+                imgUrl={review.imgUrl}
+                username={review.username}
+                dogname={review.dogname}
+                reviewContent={review.reviewContent}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
   );
 };
 

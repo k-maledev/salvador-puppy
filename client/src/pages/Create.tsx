@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -106,22 +107,28 @@ const Create = () => {
   }
 
   return (
-    <div className={`${styles.pageContainer} relative`}>
-      <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
+    <>
+      <Helmet>
+        <meta property="title" content="사이버 반려견 생성 - 살바도르 퍼피" />
+      </Helmet>
 
-      <span className="mb-2">{showingStage} / 3 단계</span>
-      {showingSelection}
+      <div className={`${styles.pageContainer} relative`}>
+        <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
 
-      {(showingSelectionId === "accessory" ||
-        showingSelectionId === "location") && (
-        <button
-          className="absolute left-6 top-1.5 w-8 h-8"
-          onClick={handleClickPrev}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
-        </button>
-      )}
-    </div>
+        <span className="mb-2">{showingStage} / 3 단계</span>
+        {showingSelection}
+
+        {(showingSelectionId === "accessory" ||
+          showingSelectionId === "location") && (
+          <button
+            className="absolute left-6 top-1.5 w-8 h-8"
+            onClick={handleClickPrev}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
+          </button>
+        )}
+      </div>
+    </>
   );
 };
 
