@@ -21,8 +21,8 @@ const Selection: React.FC<{
               }
               className={`px-3 py-1.5 rounded-lg shadow-lg transition-transform duration-100 ${
                 selectedOption === option.id
-                  ? "bg-gray-600 font-medium scale-[1.08]"
-                  : "bg-gray-400"
+                  ? "bg-blue-500 font-medium scale-[1.08]"
+                  : "bg-gray-700"
               }`}
             >
               {option.value}
