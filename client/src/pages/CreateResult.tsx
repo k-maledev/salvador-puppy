@@ -30,6 +30,8 @@ const CreateResult = () => {
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
+      setLoading(true);
+
       const data: NewReview = {
         image,
         username,
@@ -78,9 +80,7 @@ const CreateResult = () => {
         className={`${styles.columnCenter} w-full max-w-md`}
         onSubmit={handleSubmit}
       >
-        <h4 className="text-xl mb-6 w-full text-center py-2 bg-[#777]">
-          후기 남기기
-        </h4>
+        <h4 className="text-xl mb-6 w-full text-center py-2 bg-[#777]">리뷰</h4>
 
         <div className="flex flex-col gap-2 w-full max-w-sm mb-6">
           <label htmlFor="username" className="text-[#ccc]">
