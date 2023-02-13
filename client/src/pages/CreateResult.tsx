@@ -45,7 +45,7 @@ const CreateResult = () => {
 
         if (response.success) {
           setLoading(false);
-          navigate("/reviews");
+          navigate("/album");
         }
       } catch (error) {
         console.log(error);
@@ -88,8 +88,8 @@ const CreateResult = () => {
           className={`${styles.columnCenter} w-full max-w-md`}
           onSubmit={handleSubmit}
         >
-          <h4 className="text-xl mb-6 w-full text-center py-2 bg-[#777]">
-            리뷰
+          <h4 className="text-lg mb-6 w-full text-center py-2 bg-[#777]">
+            {dogname || "반려견"}의 사진을 앨범에 남겨보세요.
           </h4>
 
           <div className="flex flex-col gap-2 w-full max-w-sm mb-6">
@@ -107,7 +107,7 @@ const CreateResult = () => {
             />
 
             <label htmlFor="dogname" className="text-[#ccc]">
-              사이버 반려견의 이름을 지어주세요!
+              반려견의 이름을 지어주세요!
             </label>
             <input
               id="dogname"
@@ -125,13 +125,12 @@ const CreateResult = () => {
               htmlFor="review-content"
               className="block w-full ml-1 text-[#ccc]"
             >
-              생생한 후기 남겨주세요~
+              내용을 입력해주세요. (6글자 이상)
             </label>
             <textarea
               id="review-content"
               className="block w-full h-40 outline-none px-4 py-2 bg-transparent border text-[#f0f0f0] border-[#aaa] focus:border-[#f0f0f0] resize-none"
-              placeholder="내용을 작성해주세요. (10글자 이상)"
-              minLength={10}
+              placeholder="사랑한다 우리 반려견!!!"
               maxLength={120}
               value={reviewContent}
               onChange={(e) => setReviewContent(e.target.value)}
@@ -142,7 +141,7 @@ const CreateResult = () => {
             disabled={
               username.trim().length < 2 ||
               dogname.trim().length < 2 ||
-              reviewContent.trim().length < 10
+              reviewContent.trim().length < 6
             }
             className={styles.buttonOutlinedWhite}
           >

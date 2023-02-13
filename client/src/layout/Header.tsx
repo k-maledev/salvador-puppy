@@ -5,7 +5,7 @@ import styles from "../style";
 
 const NAVLINKS = [
   { id: 0, pathname: "/", text: "살바도르 퍼피" },
-  { id: 1, pathname: "/reviews", text: "리뷰" },
+  { id: 1, pathname: "/album", text: "앨범" },
   { id: 2, pathname: "/feedback", text: "피드백" },
   { id: 3, pathname: "/donate", text: "후원" },
   { id: 4, pathname: "/create", text: "생성하기" },

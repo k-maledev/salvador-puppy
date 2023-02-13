@@ -22,8 +22,8 @@ const Home = () => {
           <Link to="/create" className={styles.buttonWhite}>
             생성하기
           </Link>
-          <Link to="/reviews" className={styles.buttonOutlinedWhite}>
-            리뷰 보기
+          <Link to="/album" className={styles.buttonOutlinedWhite}>
+            앨범 보기
           </Link>
         </div>
       </div>

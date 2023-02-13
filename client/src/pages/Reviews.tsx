@@ -27,11 +27,11 @@ const Reviews = () => {
   return (
     <>
       <Helmet>
-        <title>고객 리뷰 - 살바도르 퍼피</title>
+        <title>앨범 - 살바도르 퍼피</title>
       </Helmet>
 
       <div className={styles.pageContainer}>
-        <h2 className={styles.pageHeading}>리뷰</h2>
+        <h2 className={styles.pageHeading}>앨범</h2>
 
         {reviews && reviews.length !== 0 && (
           <ul className="flex flex-col w-full">
