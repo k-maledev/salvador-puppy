@@ -5,6 +5,7 @@ import { ReviewItem } from "../component";
 import { getReviews } from "../api";
 import styles from "../style";
 import { ReviewData } from "../types";
+import Loading from "../component/Loading";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState<ReviewData[]>();
@@ -23,21 +24,16 @@ const Reviews = () => {
     loadReviews();
   }, []);
 
-  if (reviews === undefined) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
       <Helmet>
         <title>고객 리뷰 - 살바도르 퍼피</title>
       </Helmet>
+
       <div className={styles.pageContainer}>
         <h2 className={styles.pageHeading}>리뷰</h2>
 
-        {reviews.length === 0 ? (
-          <p>리뷰가 없습니다.</p>
-        ) : (
+        {reviews && reviews.length !== 0 && (
           <ul className="flex flex-col w-full">
             {reviews.map((review) => (
               <ReviewItem key={review._id} review={review} />
@@ -45,6 +41,8 @@ const Reviews = () => {
           </ul>
         )}
       </div>
+
+      {reviews === undefined && <Loading />}
     </>
   );
 };
