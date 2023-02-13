@@ -40,14 +40,7 @@ const Reviews = () => {
         ) : (
           <ul className="flex flex-col w-full">
             {reviews.map((review) => (
-              <ReviewItem
-                key={review._id}
-                _id={review._id}
-                imgUrl={review.imgUrl}
-                username={review.username}
-                dogname={review.dogname}
-                reviewContent={review.reviewContent}
-              />
+              <ReviewItem key={review._id} review={review} />
             ))}
           </ul>
         )}

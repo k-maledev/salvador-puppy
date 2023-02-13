@@ -1,15 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
-import {
-  Home,
-  Create,
-  CreateResult,
-  Reviews,
-  Feedback,
-  Donate,
-  Review,
-} from "./pages";
+import { Home, Create, CreateResult, Reviews, Feedback, Donate } from "./pages";
 import PageLayout from "./layout/PageLayout";
 
 const router = createBrowserRouter([
@@ -32,10 +24,6 @@ const router = createBrowserRouter([
       {
         path: "/reviews",
         element: <Reviews />,
-      },
-      {
-        path: "/reviews/:reviewId",
-        element: <Review />,
       },
       {
         path: "/feedback",
