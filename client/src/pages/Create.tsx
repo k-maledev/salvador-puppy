@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { Helmet } from "react-helmet";
@@ -23,6 +23,18 @@ const Create = () => {
   const setLoading = useSetRecoilState(loadingState);
 
   const navigate = useNavigate();
+
+  const shuffledBreeds = useMemo(() => {
+    return BREEDS.sort((_a, _b) => 0.5 - Math.random());
+  }, []);
+
+  const shuffledAccessories = useMemo(() => {
+    return ACCESSORIES.sort((_a, _b) => 0.5 - Math.random());
+  }, []);
+
+  const shuffledLocations = useMemo(() => {
+    return LOCATIONS.sort((_a, _b) => 0.5 - Math.random());
+  }, []);
 
   const handleClickPrev = useCallback(() => {
     if (showingSelectionId === "accessory") {
@@ -69,7 +81,7 @@ const Create = () => {
       showingSelection = (
         <Selection
           title="견종"
-          options={BREEDS}
+          options={shuffledBreeds}
           selectedOption={selectedBreed}
           setSelectedOption={setSelectedBreed}
           onClickNext={() => setShowingSelectionId("accessory")}
@@ -81,7 +93,7 @@ const Create = () => {
       showingSelection = (
         <Selection
           title="악세사리"
-          options={ACCESSORIES}
+          options={shuffledAccessories}
           selectedOption={selectedAccessory}
           setSelectedOption={setSelectedAccessory}
           onClickNext={() => setShowingSelectionId("location")}
@@ -93,7 +105,7 @@ const Create = () => {
       showingSelection = (
         <Selection
           title="장소"
-          options={LOCATIONS}
+          options={shuffledLocations}
           selectedOption={selectedLocation}
           setSelectedOption={setSelectedLocation}
           onClickNext={handleSubmit}
