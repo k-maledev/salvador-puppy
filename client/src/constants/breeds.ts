@@ -20,4 +20,9 @@ export const BREEDS = [
   { id: "dalmatian", value: "달마시안" },
   { id: "afghan hound", value: "아프간 하운드" },
   { id: "border collie", value: "보더 콜리" },
+  { id: "old english sheepdog", value: "올드 잉글리쉬 쉽독" },
+  { id: "boston terrier", value: "보스턴 테리어" },
+  { id: "cocker spaniel", value: "코카 스파니엘" },
+  { id: "papillon dog", value: "파피용" },
+  { id: "mixed-breed dog", value: "믹스견" },
 ];

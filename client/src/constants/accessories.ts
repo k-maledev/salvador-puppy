@@ -1,7 +1,7 @@
 export const ACCESSORIES = [
   { id: "wearing a fedora", value: "중절모" },
   { id: "reading the Bible", value: "성서" },
-  { id: "grabbing a silver spoon", value: "은수저" },
+  { id: "grabbing a golden spoon", value: "금수저" },
   { id: "eating an ice cream cone", value: "아이스크림 콘" },
   { id: "holding a christmas gift box", value: "크리스마스 선물" },
   { id: "typing on a laptop", value: "랩탑 컴퓨터" },
@@ -22,4 +22,11 @@ export const ACCESSORIES = [
   { id: "holding a polearm", value: "폴암" },
   { id: "holding a microphone", value: "마이크" },
   { id: "with a teddy bear", value: "곰인형" },
+  { id: "holding a tumbler", value: "텀블러" },
+  { id: "grabbing colorful balloons", value: "풍선" },
+  { id: "holding the BTS Army Bomb", value: "아미밤" },
+  { id: "holding an ancient bronze ware", value: "청동기" },
+  { id: "drinking a draft beer", value: "역전 할머니 맥주" },
+  { id: "with crypto currencies", value: "암호화폐" },
+  { id: "eating a tanghulu", value: "탕후루" },
 ];

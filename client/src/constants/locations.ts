@@ -20,4 +20,8 @@ export const LOCATIONS = [
   { id: "in a ski resort", value: "스키장" },
   { id: "in Santorini island", value: "산토리니 섬" },
   { id: "in a fitness center", value: "헬스장" },
+  { id: "on mars", value: "화성 Mars" },
+  { id: "in Disneyland", value: "디즈니랜드" },
+  { id: "in Shawshank Prison", value: "쇼생크 교도소" },
+  { id: "in Apple store", value: "애플 스토어" },
 ];
