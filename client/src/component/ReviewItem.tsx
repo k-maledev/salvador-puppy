@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ReviewData } from "../types";
 import placeholder from "../assets/placeholder.png";
@@ -9,6 +9,10 @@ const ReviewItem: React.FC<{ review: ReviewData }> = ({ review }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { imgUrl, username, dogname, reviewContent } = review;
+
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? "hidden" : "unset";
+  }, [isModalOpen]);
 
   return (
     <>
