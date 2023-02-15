@@ -25,10 +25,13 @@ router.route("/").post(async (req, res) => {
 
     const image = dalleResponse.data.data[0].b64_json;
 
-    res.status(200).json({ image });
+    res.status(200).json({ success: true, data: image });
   } catch (error) {
     console.log(error);
-    res.status(500).send(error.response.data.error.message);
+    res.status(500).json({
+      success: false,
+      message: "반려견 이미지 생성에 실패했습니다. 다시 시도해주세요.",
+    });
   }
 });
 

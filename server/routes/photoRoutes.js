@@ -16,7 +16,7 @@ router.route("/").get(async (req, res) => {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: "후기 리스트를 불러들이는 데 실패했습니다. 다시 시도해주세요.",
+      message: "앨범을 불러들이는 데 실패했습니다. 다시 시도해주세요.",
     });
   }
 });
@@ -39,7 +39,7 @@ router.route("/").post(async (req, res) => {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: "후기 작성에 실패했습니다. 다시 시도해주세요.",
+      message: "업로드에 실패했습니다. 다시 시도해주세요.",
     });
   }
 });
