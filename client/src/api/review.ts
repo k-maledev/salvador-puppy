@@ -2,7 +2,7 @@ import { SERVER_URL } from "./config";
 import { NewReview } from "../types";
 
 export const getReviews = async () => {
-  const response = await fetch(`${SERVER_URL}/api/review`);
+  const response = await fetch(`${SERVER_URL}/api/rseview`);
 
   return response.json();
 };

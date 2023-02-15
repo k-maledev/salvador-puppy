@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
 
 import { ReviewItem } from "../component";
@@ -8,21 +8,12 @@ import { ReviewData } from "../types";
 import Loading from "../component/Loading";
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState<ReviewData[]>();
-
   const loadReviews = async () => {
-    try {
-      const response = await getReviews();
-
-      if (response.success) {
-        setReviews(response.data.reverse());
-      }
-    } catch (error) {}
+    const response = await getReviews();
+    if (response.success) return response.data.reverse();
   };
 
-  useEffect(() => {
-    loadReviews();
-  }, []);
+  const { data, status } = useQuery<ReviewData[]>("reviews", loadReviews);
 
   return (
     <>
@@ -33,16 +24,18 @@ const Reviews = () => {
       <div className={styles.pageContainer}>
         <h2 className={styles.pageHeading}>앨범</h2>
 
-        {reviews && reviews.length !== 0 && (
+        {status === "error" && <p>앨범 불러오기 실패</p>}
+
+        {status === "success" && data.length > 0 && (
           <ul className="flex flex-col w-full">
-            {reviews.map((review) => (
+            {data.map((review) => (
               <ReviewItem key={review._id} review={review} />
             ))}
           </ul>
         )}
       </div>
 
-      {reviews === undefined && <Loading />}
+      {status === "loading" && <Loading />}
     </>
   );
 };

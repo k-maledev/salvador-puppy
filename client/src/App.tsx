@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
 import { Home, Create, CreateResult, Reviews, Feedback, Donate } from "./pages";
@@ -38,11 +39,14 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const queryClient = new QueryClient();
   return (
     <>
-      <RecoilRoot>
-        <RouterProvider router={router} />
-      </RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <RouterProvider router={router} />
+        </RecoilRoot>
+      </QueryClientProvider>
     </>
   );
 };
