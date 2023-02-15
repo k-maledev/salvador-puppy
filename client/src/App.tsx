@@ -40,7 +40,14 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
+
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
