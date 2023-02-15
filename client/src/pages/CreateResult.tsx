@@ -1,6 +1,7 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { toast } from "react-toastify";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -40,7 +41,7 @@ const CreateResult = () => {
         await createPhoto(data);
         navigate("/album");
       } catch (error) {
-        console.log(error);
+        toast("앨범 업로드 실패", { type: "error" });
       } finally {
         setLoading(false);
       }

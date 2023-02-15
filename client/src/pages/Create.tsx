@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -68,7 +69,7 @@ const Create = () => {
         },
       });
     } catch (error) {
-      console.log(error);
+      toast("이미지 생성 실패", { type: "error" });
     } finally {
       setLoading(false);
     }

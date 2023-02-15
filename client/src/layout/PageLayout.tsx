@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -30,6 +33,16 @@ const PageLayout = () => {
       <Footer />
 
       {loading && <Loading />}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        theme="dark"
+      />
     </>
   );
 };

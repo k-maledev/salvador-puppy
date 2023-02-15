@@ -22,7 +22,7 @@ const Album = () => {
     <PageContainer title="앨범 - 살바도르 퍼피">
       <h2 className={styles.pageHeading}>앨범</h2>
 
-      {status === "error" && <p>앨범을 불러오는 데 실패했습니다.</p>}
+      {status === "error" && <p>앨범 불러오기 실패</p>}
 
       {status === "loading" && <Loading />}
 

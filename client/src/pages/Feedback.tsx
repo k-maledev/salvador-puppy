@@ -1,6 +1,7 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { toast } from "react-toastify";
 
 import { PageContainer } from "../layout";
 import { sendFeedback } from "../api";
@@ -29,10 +30,10 @@ const Feedback = () => {
 
       try {
         await sendFeedback(category, content);
-        alert("피드백이 전송되었습니다. 감사합니다.");
+        toast("피드백이 전달되었습니다.", { type: "success" });
         navigate("/");
       } catch (error) {
-        console.log(error);
+        toast("피드백 전달 실패", { type: "error" });
       } finally {
         setLoading(false);
       }
