@@ -1,11 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Helmet } from "react-helmet-async";
 
-import { PhotoItem } from "../component";
+import { PageContainer } from "../layout";
+import { PhotoItem, Loading } from "../component";
 import { getPhotos } from "../api";
-import styles from "../style";
 import { PhotoData } from "../types";
-import Loading from "../component/Loading";
+import styles from "../style";
 
 const Album = () => {
   const fetchPhotos = async (page: number) => {
@@ -23,39 +22,38 @@ const Album = () => {
       }
     );
 
-  if (status === "error") return <p>앨범을 불러오는 데 실패했습니다.</p>;
-  if (status === "loading") return <Loading />;
-
   return (
-    <>
-      <Helmet>
-        <title>앨범 - 살바도르 퍼피</title>
-      </Helmet>
+    <PageContainer title="앨범 - 살바도르 퍼피">
+      <h2 className={styles.pageHeading}>앨범</h2>
 
-      <div className={styles.pageContainer}>
-        <h2 className={styles.pageHeading}>앨범</h2>
+      {status === "error" && <p>앨범을 불러오는 데 실패했습니다.</p>}
 
-        <ul className="flex flex-col w-full">
-          {data.pages
-            .flatMap((data) => data.data)
-            .map((photo) => (
-              <PhotoItem key={photo._id} photo={photo} />
-            ))}
-        </ul>
+      {status === "loading" && <Loading />}
 
-        {hasNextPage && (
-          <button
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
-            className={`${
-              isFetchingNextPage ? "animate-spin" : ""
-            } mt-4 py-4 px-6`}
-          >
-            {isFetchingNextPage ? "🦴" : "더 보기"}
-          </button>
-        )}
-      </div>
-    </>
+      {status === "success" && (
+        <>
+          <ul className="flex flex-col w-full">
+            {data.pages
+              .flatMap((data) => data.data)
+              .map((photo) => (
+                <PhotoItem key={photo._id} photo={photo} />
+              ))}
+          </ul>
+
+          {hasNextPage && (
+            <button
+              onClick={() => fetchNextPage()}
+              disabled={isFetchingNextPage}
+              className={`${
+                isFetchingNextPage ? "animate-spin" : "border-b"
+              } mt-6 py-2 px-3`}
+            >
+              {isFetchingNextPage ? "🦴" : "더 보기"}
+            </button>
+          )}
+        </>
+      )}
+    </PageContainer>
   );
 };
 

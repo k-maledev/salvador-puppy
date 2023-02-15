@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import Loading from "../component/Loading";
+import { Loading } from "../component";
 import { loadingState } from "../recoil";
 
 const PageLayout = () => {

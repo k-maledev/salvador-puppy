@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
+import { PhotoModal } from "../component";
 import { PhotoData } from "../types";
+
 import placeholder from "../assets/placeholder.png";
-import PhotoModal from "./PhotoModal";
 
 const PhotoItem: React.FC<{ photo: PhotoData }> = ({ photo }) => {
   const [loaded, setLoaded] = useState(false);

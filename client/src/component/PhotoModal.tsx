@@ -2,9 +2,10 @@ import { useState } from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import placeholder from "../assets/placeholder.png";
-import styles from "../style";
 import { PhotoData } from "../types";
+import styles from "../style";
+
+import placeholder from "../assets/placeholder.png";
 
 const PhotoModal: React.FC<{
   photo: PhotoData;

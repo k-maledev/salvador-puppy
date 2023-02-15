@@ -1,8 +1,8 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { Helmet } from "react-helmet-async";
 
+import { PageContainer } from "../layout";
 import { sendFeedback } from "../api";
 import { loadingState } from "../recoil";
 import styles from "../style";
@@ -44,49 +44,44 @@ const Feedback = () => {
   );
 
   return (
-    <>
-      <Helmet>
-        <title>피드백 남기기 - 살바도르 퍼피</title>
-      </Helmet>
-      <div className={styles.pageContainer}>
-        <h3 className={styles.pageHeading}>피드백을 남겨주세요.</h3>
-        <form
-          onSubmit={handleSubmit}
-          className={`${styles.columnCenter} max-w-lg w-full gap-8 mt-8`}
-        >
-          <div className={`${styles.columnCenter} w-full`}>
-            <select
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full appearance-none bg-transparent border-b border-b-[#f0f0f0] px-2 py-2 outline-none cursor-pointer"
-              placeholder="카테고리를 선택해주세요."
-              defaultValue=""
-            >
-              <option value="" disabled>
-                카테고리를 선택해주세요.
-              </option>
-              {CATEGORIES.map((category) => (
-                <option key={category.id} value={category.value}>
-                  {category.text}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <textarea
-            onChange={(e) => setContent(e.target.value)}
-            className="w-full h-60 bg-transparent  outline-none px-3 py-2 border text-[#f0f0f0] border-[#aaa] focus:border-[#f0f0f0] resize-none "
-            placeholder="내용을 작성해주세요. (6글자 이상)"
-          ></textarea>
-
-          <button
-            disabled={!category || content.trim().length < 6}
-            className={styles.buttonOutlinedWhite}
+    <PageContainer title="피드백 남기기 - 살바도르 퍼피">
+      <h3 className={styles.pageHeading}>피드백을 남겨주세요.</h3>
+      <form
+        onSubmit={handleSubmit}
+        className={`${styles.columnCenter} max-w-lg w-full gap-8 mt-8`}
+      >
+        <div className={`${styles.columnCenter} w-full`}>
+          <select
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full appearance-none bg-transparent border-b border-b-[#f0f0f0] px-2 py-2 outline-none cursor-pointer"
+            placeholder="카테고리를 선택해주세요."
+            defaultValue=""
           >
-            제출하기
-          </button>
-        </form>
-      </div>
-    </>
+            <option value="" disabled>
+              카테고리를 선택해주세요.
+            </option>
+            {CATEGORIES.map((category) => (
+              <option key={category.id} value={category.value}>
+                {category.text}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <textarea
+          onChange={(e) => setContent(e.target.value)}
+          className="w-full h-60 bg-transparent  outline-none px-3 py-2 border text-[#f0f0f0] border-[#aaa] focus:border-[#f0f0f0] resize-none "
+          placeholder="내용을 작성해주세요. (6글자 이상)"
+        ></textarea>
+
+        <button
+          disabled={!category || content.trim().length < 6}
+          className={styles.buttonOutlinedWhite}
+        >
+          제출하기
+        </button>
+      </form>
+    </PageContainer>
   );
 };
 

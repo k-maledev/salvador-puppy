@@ -1,15 +1,15 @@
 import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { Helmet } from "react-helmet-async";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
+import { PageContainer } from "../layout";
 import { Selection } from "../component";
 import { generateImage } from "../api";
 import { BREEDS, ACCESSORIES, LOCATIONS } from "../constants";
-import styles from "../style";
 import { loadingState } from "../recoil";
+import styles from "../style";
 
 const Create = () => {
   const [showingSelectionId, setShowingSelectionId] = useState<
@@ -51,21 +51,22 @@ const Create = () => {
 
     try {
       const response = await generateImage(prompt);
+
       const image = `data:image/jpeg;base64,${response.data}`;
+      const selectedOptions = {
+        breed: BREEDS.find((breed) => breed.id === selectedBreed)?.value,
+        accessory: ACCESSORIES.find((breed) => breed.id === selectedAccessory)
+          ?.value,
+        location: LOCATIONS.find((breed) => breed.id === selectedLocation)
+          ?.value,
+      };
 
       setLoading(false);
 
       navigate("/create-result", {
         state: {
           image,
-          selectedOptions: {
-            breed: BREEDS.find((breed) => breed.id === selectedBreed)?.value,
-            accessory: ACCESSORIES.find(
-              (breed) => breed.id === selectedAccessory
-            )?.value,
-            location: LOCATIONS.find((breed) => breed.id === selectedLocation)
-              ?.value,
-          },
+          selectedOptions,
         },
       });
     } catch (error) {
@@ -121,27 +122,25 @@ const Create = () => {
   }
 
   return (
-    <>
-      <Helmet>
-        <title>사이버 반려견 생성 - 살바도르 퍼피</title>
-      </Helmet>
-      <div className={`${styles.pageContainer} relative`}>
-        <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
+    <PageContainer
+      title="사이버 반려견 생성 - 살바도르 퍼피"
+      className="relative"
+    >
+      <h2 className={`${styles.pageHeading} xs:mb-8`}>사이버 반려견 생성</h2>
 
-        <span className="mb-2">{showingStage} / 3 단계</span>
-        {showingSelection}
+      <span className="mb-2">{showingStage} / 3 단계</span>
+      {showingSelection}
 
-        {(showingSelectionId === "accessory" ||
-          showingSelectionId === "location") && (
-          <button
-            className="absolute left-6 top-1.5 w-8 h-8"
-            onClick={handleClickPrev}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
-          </button>
-        )}
-      </div>
-    </>
+      {(showingSelectionId === "accessory" ||
+        showingSelectionId === "location") && (
+        <button
+          className="absolute left-6 top-1.5 w-8 h-8"
+          onClick={handleClickPrev}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
+        </button>
+      )}
+    </PageContainer>
   );
 };
 

@@ -32,7 +32,7 @@ const Header = () => {
           </Link>
 
           <button
-            onClick={() => setIsNavOpen((prev) => !prev)}
+            onClick={() => setIsNavOpen(true)}
             className="text-2xl cursor-pointer"
           >
             🦴
@@ -40,38 +40,37 @@ const Header = () => {
         </div>
 
         {isNavOpen && (
-          <div
-            className="fixed top-0 left-0 right-0 bottom-0 z-40 bg-[rgba(0,0,0,0.6)]"
-            onClick={() => setIsNavOpen(false)}
-          ></div>
-        )}
+          <>
+            <div
+              className="fixed top-0 left-0 right-0 bottom-0 z-40 bg-[rgba(0,0,0,0.6)]"
+              onClick={() => setIsNavOpen(false)}
+            />
 
-        {isNavOpen && (
-          <nav
-            className={`absolute z-50 top-16 sm:right-10 right-4 transition-all shadow-sm bg-[rgba(0,0,0,0.9)] ${
-              isNavOpen
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-full opacity-0"
-            }`}
-          >
-            <ul className="pt-6 pb-2 flex flex-col gap-4 text-xl">
-              {NAVLINKS.map((navlinks) => (
-                <li key={navlinks.id}>
-                  <NavLink to={navlinks.pathname} className={`px-8 py-2 block`}>
-                    <span
-                      className={`${
-                        pathname === navlinks.pathname
-                          ? "border-b border-b-white"
-                          : ""
-                      }}`}
+            <nav
+              className={`absolute z-50 top-16 sm:right-10 right-4 transition-all shadow-sm bg-[rgba(0,0,0,0.9)] ${
+                isNavOpen
+                  ? "translate-y-0 opacity-100"
+                  : "-translate-y-full opacity-0"
+              }`}
+            >
+              <ul className="pt-6 pb-2 flex flex-col gap-4 text-xl">
+                {NAVLINKS.map((navlinks) => (
+                  <li key={navlinks.id}>
+                    <NavLink
+                      to={navlinks.pathname}
+                      className={({ isActive }) =>
+                        `mx-8 py-2 inline-block ${
+                          isActive ? "border-b border-white" : undefined
+                        }`
+                      }
                     >
                       {navlinks.text}
-                    </span>
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </>
         )}
       </div>
     </header>
