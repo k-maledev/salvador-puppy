@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import placeholder from "../assets/placeholder.png";
 import styles from "../style";
-import { ReviewData } from "../types";
+import { PhotoData } from "../types";
 
-const ReviewModal: React.FC<{
-  review: ReviewData;
+const PhotoModal: React.FC<{
+  photo: PhotoData;
   handleClose: () => void;
-}> = ({ review, handleClose }) => {
+}> = ({ photo, handleClose }) => {
   const [loaded, setLoaded] = useState(false);
-  const { imgUrl, username, dogname, reviewContent } = review;
+  const { imgUrl, username, dogname, content } = photo;
 
   return (
     <div className={styles.modalContainer}>
@@ -38,10 +38,10 @@ const ReviewModal: React.FC<{
         </h2>
         <p className="text-lg border py-1 px-3 mb-4">{dogname}</p>
 
-        <p className="xs:text-md text-sm">{reviewContent}</p>
+        <p className="xs:text-md text-sm">{content}</p>
       </div>
     </div>
   );
 };
 
-export default ReviewModal;
+export default PhotoModal;

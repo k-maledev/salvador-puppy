@@ -1,19 +1,19 @@
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet-async";
 
-import { ReviewItem } from "../component";
-import { getReviews } from "../api";
+import { PhotoItem } from "../component";
+import { getPhotos } from "../api";
 import styles from "../style";
-import { ReviewData } from "../types";
+import { PhotoData } from "../types";
 import Loading from "../component/Loading";
 
-const Reviews = () => {
-  const loadReviews = async () => {
-    const response = await getReviews();
+const Album = () => {
+  const loadPhotos = async () => {
+    const response = await getPhotos();
     if (response.success) return response.data.reverse();
   };
 
-  const { data, status } = useQuery<ReviewData[]>("reviews", loadReviews);
+  const { data, status } = useQuery<PhotoData[]>("photos", loadPhotos);
 
   return (
     <>
@@ -28,8 +28,8 @@ const Reviews = () => {
 
         {status === "success" && data.length > 0 && (
           <ul className="flex flex-col w-full">
-            {data.map((review) => (
-              <ReviewItem key={review._id} review={review} />
+            {data.map((photo) => (
+              <PhotoItem key={photo._id} photo={photo} />
             ))}
           </ul>
         )}
@@ -40,4 +40,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews;
+export default Album;

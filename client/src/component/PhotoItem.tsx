@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-import { ReviewData } from "../types";
+import { PhotoData } from "../types";
 import placeholder from "../assets/placeholder.png";
-import ReviewModal from "./ReviewModal";
+import PhotoModal from "./PhotoModal";
 
-const ReviewItem: React.FC<{ review: ReviewData }> = ({ review }) => {
+const PhotoItem: React.FC<{ photo: PhotoData }> = ({ photo }) => {
   const [loaded, setLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { imgUrl, username, dogname, reviewContent } = review;
+  const { imgUrl, username, dogname, content } = photo;
 
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? "hidden" : "unset";
@@ -40,18 +40,15 @@ const ReviewItem: React.FC<{ review: ReviewData }> = ({ review }) => {
           </p>
 
           <p className="xs:text-sm text-xs break-all sm:line-clamp-3 xs:line-clamp-2 line-clamp-3">
-            {reviewContent}
+            {content}
           </p>
         </div>
       </li>
       {isModalOpen && (
-        <ReviewModal
-          review={review}
-          handleClose={() => setIsModalOpen(false)}
-        />
+        <PhotoModal photo={photo} handleClose={() => setIsModalOpen(false)} />
       )}
     </>
   );
 };
 
-export default ReviewItem;
+export default PhotoItem;

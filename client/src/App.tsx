@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
-import { Home, Create, CreateResult, Reviews, Feedback, Donate } from "./pages";
+import { Home, Create, CreateResult, Album, Feedback, Donate } from "./pages";
 import PageLayout from "./layout/PageLayout";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/album",
-        element: <Reviews />,
+        element: <Album />,
       },
       {
         path: "/feedback",

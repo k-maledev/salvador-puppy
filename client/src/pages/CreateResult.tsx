@@ -6,15 +6,15 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { saveAs } from "file-saver";
 
-import { createReview } from "../api";
+import { createPhoto } from "../api";
 import styles from "../style";
-import { NewReview } from "../types";
+import { NewPhoto } from "../types";
 import { loadingState } from "../recoil";
 
 const CreateResult = () => {
   const [username, setUsername] = useState("");
   const [dogname, setDogname] = useState("");
-  const [reviewContent, setReviewContent] = useState("");
+  const [content, setContent] = useState("");
 
   const setLoading = useSetRecoilState(loadingState);
 
@@ -33,15 +33,15 @@ const CreateResult = () => {
 
       setLoading(true);
 
-      const data: NewReview = {
+      const data: NewPhoto = {
         image,
         username,
         dogname,
-        reviewContent,
+        content,
       };
 
       try {
-        const response = await createReview(data);
+        const response = await createPhoto(data);
 
         if (response.success) {
           setLoading(false);
@@ -52,7 +52,7 @@ const CreateResult = () => {
         setLoading(false);
       }
     },
-    [image, username, dogname, reviewContent]
+    [image, username, dogname, content]
   );
 
   return (
@@ -122,18 +122,18 @@ const CreateResult = () => {
 
           <div className={`${styles.columnCenter} gap-2 w-full max-w-sm mb-6`}>
             <label
-              htmlFor="review-content"
+              htmlFor="photo-content"
               className="block w-full ml-1 text-[#ccc]"
             >
               내용을 입력해주세요. (6글자 이상)
             </label>
             <textarea
-              id="review-content"
+              id="photo-content"
               className="block w-full h-40 outline-none px-4 py-2 bg-transparent border text-[#f0f0f0] border-[#aaa] focus:border-[#f0f0f0] resize-none"
               placeholder="사랑한다 우리 반려견!!!"
               maxLength={120}
-              value={reviewContent}
-              onChange={(e) => setReviewContent(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
           </div>
 
@@ -141,7 +141,7 @@ const CreateResult = () => {
             disabled={
               username.trim().length < 2 ||
               dogname.trim().length < 2 ||
-              reviewContent.trim().length < 6
+              content.trim().length < 6
             }
             className={styles.buttonOutlinedWhite}
           >

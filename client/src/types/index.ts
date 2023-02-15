@@ -1,14 +1,14 @@
-export interface NewReview {
+export interface NewPhoto {
   image: string;
   username: string;
   dogname: string;
-  reviewContent: string;
+  content: string;
 }
 
-export interface ReviewData {
+export interface PhotoData {
   _id: string;
   imgUrl: string;
   username: string;
   dogname: string;
-  reviewContent: string;
+  content: string;
 }

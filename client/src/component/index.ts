@@ -3,7 +3,7 @@ import Samples from "./Samples";
 import Description from "./Description";
 import MeetingAnimation from "./MeetingAnimation";
 import Selection from "./Selection";
-import ReviewItem from "./ReviewItem";
+import PhotoItem from "./PhotoItem";
 
 export {
   Overview,
@@ -11,5 +11,5 @@ export {
   Description,
   MeetingAnimation,
   Selection,
-  ReviewItem,
+  PhotoItem,
 };

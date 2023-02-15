@@ -1,5 +1,5 @@
 import { generateImage } from "./generate-image";
-import { getReviews, createReview } from "./review";
+import { getPhotos, createPhoto } from "./photo";
 import { sendFeedback } from "./feedback";
 
-export { generateImage, getReviews, createReview, sendFeedback };
+export { generateImage, getPhotos, createPhoto, sendFeedback };
