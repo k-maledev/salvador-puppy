@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 
 import { Home, Create, CreateResult, Reviews, Feedback, Donate } from "./pages";
 import PageLayout from "./layout/PageLayout";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +42,13 @@ const router = createBrowserRouter([
 const App = () => {
   const queryClient = new QueryClient();
   return (
-    <>
+    <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <RouterProvider router={router} />
         </RecoilRoot>
       </QueryClientProvider>
-    </>
+    </HelmetProvider>
   );
 };
 

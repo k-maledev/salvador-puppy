@@ -1,7 +1,7 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { saveAs } from "file-saver";

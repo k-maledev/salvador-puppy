@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import { ReviewItem } from "../component";
 import { getReviews } from "../api";

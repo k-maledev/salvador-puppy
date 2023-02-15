@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import styles from "../style";
 import tossQrcode from "../assets/toss-qrcode.jpg";

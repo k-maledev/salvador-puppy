@@ -1,7 +1,7 @@
 import { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import { sendFeedback } from "../api";
 import { loadingState } from "../recoil";
