@@ -28,15 +28,12 @@ const Feedback = () => {
       setLoading(true);
 
       try {
-        const response = await sendFeedback(category, content);
-
-        if (response.success) {
-          setLoading(false);
-          alert("피드백이 전송되었습니다. 감사합니다.");
-          navigate("/");
-        }
+        await sendFeedback(category, content);
+        alert("피드백이 전송되었습니다. 감사합니다.");
+        navigate("/");
       } catch (error) {
         console.log(error);
+      } finally {
         setLoading(false);
       }
     },

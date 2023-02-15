@@ -35,7 +35,7 @@ router.route("/").get(async (req, res) => {
 
 router.route("/").post(async (req, res) => {
   try {
-    const { image, username, dogname, photoContent } = req.body;
+    const { image, username, dogname, content } = req.body;
 
     const imgUrl = await uploadImage(image);
 
@@ -43,7 +43,7 @@ router.route("/").post(async (req, res) => {
       imgUrl,
       username,
       dogname,
-      photoContent,
+      content,
     });
 
     res.status(200).json({ success: true, data: newPhoto });

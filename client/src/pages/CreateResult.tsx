@@ -37,14 +37,11 @@ const CreateResult = () => {
       };
 
       try {
-        const response = await createPhoto(data);
-
-        if (response.success) {
-          setLoading(false);
-          navigate("/album");
-        }
+        await createPhoto(data);
+        navigate("/album");
       } catch (error) {
         console.log(error);
+      } finally {
         setLoading(false);
       }
     },
@@ -117,14 +114,11 @@ const CreateResult = () => {
         </div>
 
         <div className={`${styles.columnCenter} gap-2 w-full max-w-sm mb-6`}>
-          <label
-            htmlFor="photo-content"
-            className="block w-full ml-1 text-[#ccc]"
-          >
+          <label htmlFor="content" className="block w-full ml-1 text-[#ccc]">
             내용을 입력해주세요. (6글자 이상)
           </label>
           <textarea
-            id="photo-content"
+            id="content"
             className="block w-full h-40 outline-none px-4 py-2 bg-transparent border text-[#f0f0f0] border-[#aaa] focus:border-[#f0f0f0] resize-none"
             placeholder="사랑한다 우리 반려견!!!"
             maxLength={120}

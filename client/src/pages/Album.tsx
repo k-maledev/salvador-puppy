@@ -8,19 +8,15 @@ import styles from "../style";
 
 const Album = () => {
   const fetchPhotos = async (page: number) => {
-    const response = await getPhotos(page);
-
-    if (response.success) return response;
+    return await getPhotos(page);
   };
 
   const { status, data, isFetchingNextPage, hasNextPage, fetchNextPage } =
-    useInfiniteQuery<{ data: PhotoData[]; success: boolean; nextPage: number }>(
-      {
-        queryKey: ["photos"],
-        getNextPageParam: (prevData) => prevData.nextPage,
-        queryFn: ({ pageParam = 1 }) => fetchPhotos(pageParam),
-      }
-    );
+    useInfiniteQuery<{ data: PhotoData[]; nextPage: number }>({
+      queryKey: ["photos"],
+      getNextPageParam: (prevData) => prevData.nextPage,
+      queryFn: ({ pageParam = 1 }) => fetchPhotos(pageParam),
+    });
 
   return (
     <PageContainer title="앨범 - 살바도르 퍼피">

@@ -61,8 +61,6 @@ const Create = () => {
           ?.value,
       };
 
-      setLoading(false);
-
       navigate("/create-result", {
         state: {
           image,
@@ -71,6 +69,7 @@ const Create = () => {
       });
     } catch (error) {
       console.log(error);
+    } finally {
       setLoading(false);
     }
   }, [selectedBreed, selectedAccessory, selectedLocation]);
