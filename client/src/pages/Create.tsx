@@ -50,7 +50,9 @@ const Create = () => {
     const prompt = `${selectedBreed}, ${selectedAccessory}, ${selectedLocation}, photo`;
 
     try {
-      const image = await generateImage(prompt);
+      const response = await generateImage(prompt);
+      const image = `data:image/jpeg;base64,${response.data}`;
+
       setLoading(false);
 
       navigate("/create-result", {

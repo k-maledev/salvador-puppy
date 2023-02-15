@@ -11,6 +11,5 @@ export const generateImage = async (prompt: string) => {
     }),
   });
 
-  const { image } = await response.json();
-  return `data:image/jpeg;base64,${image}`;
+  return response.json();
 };
