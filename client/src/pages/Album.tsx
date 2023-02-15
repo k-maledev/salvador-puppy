@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 
 import { PhotoItem } from "../component";
@@ -8,12 +8,23 @@ import { PhotoData } from "../types";
 import Loading from "../component/Loading";
 
 const Album = () => {
-  const loadPhotos = async () => {
-    const response = await getPhotos();
-    if (response.success) return response.data.reverse();
+  const fetchPhotos = async (page: number) => {
+    const response = await getPhotos(page);
+
+    if (response.success) return response;
   };
 
-  const { data, status } = useQuery<PhotoData[]>("photos", loadPhotos);
+  const { status, data, isFetchingNextPage, hasNextPage, fetchNextPage } =
+    useInfiniteQuery<{ data: PhotoData[]; success: boolean; nextPage: number }>(
+      {
+        queryKey: ["photos"],
+        getNextPageParam: (prevData) => prevData.nextPage,
+        queryFn: ({ pageParam = 1 }) => fetchPhotos(pageParam),
+      }
+    );
+
+  if (status === "error") return <p>앨범을 불러오는 데 실패했습니다.</p>;
+  if (status === "loading") return <Loading />;
 
   return (
     <>
@@ -24,18 +35,24 @@ const Album = () => {
       <div className={styles.pageContainer}>
         <h2 className={styles.pageHeading}>앨범</h2>
 
-        {status === "error" && <p>앨범 불러오기 실패</p>}
-
-        {status === "success" && data.length > 0 && (
-          <ul className="flex flex-col w-full">
-            {data.map((photo) => (
+        <ul className="flex flex-col w-full">
+          {data.pages
+            .flatMap((data) => data.data)
+            .map((photo) => (
               <PhotoItem key={photo._id} photo={photo} />
             ))}
-          </ul>
+        </ul>
+
+        {hasNextPage && (
+          <button
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+            className={`${isFetchingNextPage ? "animate-spin" : ""} mt-8`}
+          >
+            {isFetchingNextPage ? "🦴" : "더 보기"}
+          </button>
         )}
       </div>
-
-      {status === "loading" && <Loading />}
     </>
   );
 };

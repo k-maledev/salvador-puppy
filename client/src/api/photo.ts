@@ -1,8 +1,8 @@
 import { SERVER_URL } from "./config";
 import { NewPhoto } from "../types";
 
-export const getPhotos = async () => {
-  const response = await fetch(`${SERVER_URL}/api/photo`);
+export const getPhotos = async (page: number) => {
+  const response = await fetch(`${SERVER_URL}/api/photo?page=${page}`);
 
   return response.json();
 };

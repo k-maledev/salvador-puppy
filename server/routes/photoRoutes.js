@@ -10,8 +10,20 @@ const router = express.Router();
 
 router.route("/").get(async (req, res) => {
   try {
-    const photos = await Photo.find({});
-    res.status(200).json({ success: true, data: photos });
+    const page = +req.query.page;
+
+    const ITEMS_PER_PAGE = 10;
+
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = page * ITEMS_PER_PAGE;
+
+    const allPhotos = await Photo.find({});
+
+    res.status(200).json({
+      success: true,
+      data: allPhotos.reverse().slice(startIndex, endIndex),
+      nextPage: endIndex < allPhotos.length ? page + 1 : null,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
