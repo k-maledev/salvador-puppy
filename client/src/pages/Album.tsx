@@ -47,7 +47,9 @@ const Album = () => {
           <button
             onClick={() => fetchNextPage()}
             disabled={isFetchingNextPage}
-            className={`${isFetchingNextPage ? "animate-spin" : ""} mt-8`}
+            className={`${
+              isFetchingNextPage ? "animate-spin" : ""
+            } mt-4 py-4 px-6`}
           >
             {isFetchingNextPage ? "🦴" : "더 보기"}
           </button>
