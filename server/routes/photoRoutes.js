@@ -1,7 +1,7 @@
 import express from "express";
 import * as dotenv from "dotenv";
 
-import Review from "../mongodb/models/review.js";
+import Photo from "../mongodb/models/photo.js";
 import { uploadImage } from "../firebase/index.js";
 
 dotenv.config();
@@ -10,8 +10,8 @@ const router = express.Router();
 
 router.route("/").get(async (req, res) => {
   try {
-    const reviews = await Review.find({});
-    res.status(200).json({ success: true, data: reviews });
+    const photos = await Photo.find({});
+    res.status(200).json({ success: true, data: photos });
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -23,18 +23,18 @@ router.route("/").get(async (req, res) => {
 
 router.route("/").post(async (req, res) => {
   try {
-    const { image, username, dogname, reviewContent } = req.body;
+    const { image, username, dogname, photoContent } = req.body;
 
     const imgUrl = await uploadImage(image);
 
-    const newReview = await Review.create({
+    const newPhoto = await Photo.create({
       imgUrl,
       username,
       dogname,
-      reviewContent,
+      photoContent,
     });
 
-    res.status(200).json({ success: true, data: newReview });
+    res.status(200).json({ success: true, data: newPhoto });
   } catch (error) {
     console.log(error);
     res.status(500).json({
